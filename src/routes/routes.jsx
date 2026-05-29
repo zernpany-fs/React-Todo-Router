@@ -9,9 +9,9 @@ export const router = createBrowserRouter([
     path: "/",
     Component: RootLayout,
     children: [
-      { path: "/create", Component: CreateTodoPage },
-      { path: "/edit/:todoId", Component: EditTodoPage },
-      { path: "/home", Component: HomePage },
+      { index: true, Component: HomePage },
+      { path: "edit/:todoId", Component: EditTodoPage },
+      { path: "create", Component: CreateTodoPage },
     ],
   },
 ]);
