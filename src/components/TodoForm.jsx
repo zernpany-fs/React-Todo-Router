@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { createTodo } from "../api/todo";
 
 export default function TodoForm() {
@@ -10,10 +10,14 @@ export default function TodoForm() {
     mutationFn: createTodo,
   });
 
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() === "") return;
+
     create.mutate({ title });
+    navigate("/");
   };
 
   return (
