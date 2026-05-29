@@ -16,3 +16,9 @@ export async function deleteTodo(id) {
   const { data } = await api.delete(`/todos/${id}`);
   return data;
 }
+
+//! {id, title?, object?}
+export async function updateTodo({ id, ...body }) {
+  const { data } = await api.patch(`/todos/${id}`, body);
+  return data;
+}
