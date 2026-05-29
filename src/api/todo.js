@@ -7,4 +7,7 @@ export async function getTodos() {
   return data;
 }
 
-export async function createTodo() {}
+export async function createTodo(newTodo) {
+  const { data } = await api.post("/todos", newTodo);
+  return data;
+}

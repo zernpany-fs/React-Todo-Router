@@ -1,12 +1,19 @@
+import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link } from "react-router";
+import { createTodo } from "../api/todo";
 
 export default function TodoForm() {
   const [title, setTitle] = useState("");
 
+  const create = useMutation({
+    mutationFn: createTodo,
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (title.trim() === "") return;
+    create.mutate({ title });
   };
 
   return (
