@@ -1,4 +1,7 @@
+import { getTodos } from "../api/todo";
 import TodoItem from "./TodoItem";
+
+getTodos().then((data) => console.log(data));
 
 export default function TodoList() {
   return (

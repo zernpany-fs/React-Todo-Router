@@ -10,7 +10,7 @@ export default function TodoItem({ id, title, completed }) {
           className="size-4 accent-blue-300 rounded-lg"
           checked={completed}
         />
-        <span className={completed ? "text-red-500 line-through" : ""}>
+        <span className={completed ? "text-red-500 line-through" : undefined}>
           {title}
         </span>
       </div>
