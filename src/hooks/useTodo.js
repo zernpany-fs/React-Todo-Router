@@ -5,6 +5,7 @@ export function useTodos() {
   return useQuery({
     queryKey: ["todos"],
     queryFn: getTodos,
+    staleTime: 2000,
   });
 }
 //! CUSTOM HOOK !!
