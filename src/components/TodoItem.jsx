@@ -1,7 +1,10 @@
 import { Link } from "react-router";
+import { deleteTodo } from "../api/todo";
+import { useDeleteTodo } from "../hooks/useTodo";
 
 // props(not popular anymore) ==> use destructuring {id, title, completed}
 export default function TodoItem({ id, title, completed }) {
+  const deleteTodo = useDeleteTodo();
   return (
     <li className="flex justify-between items-center border rounded-lg px-4 py-4">
       <div className="space-x-4">
@@ -19,7 +22,13 @@ export default function TodoItem({ id, title, completed }) {
         <Link to={`/edit/${id}`} className="text-xl hover:shadow-lg">
           ✏️
         </Link>
-        <button className="text-xl hover:shadow-lg">🗑️</button>
+        <button
+          className="text-xl hover:shadow-lg"
+          disabled={deleteTodo.isPending}
+          onClick={() => deleteTodo.mutate(id)}
+        >
+          🗑️
+        </button>
       </div>
     </li>
   );

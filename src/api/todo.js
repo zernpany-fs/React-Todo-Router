@@ -11,3 +11,8 @@ export async function createTodo(newTodo) {
   const { data } = await api.post("/todos", newTodo);
   return data;
 }
+
+export async function deleteTodo(id) {
+  const { data } = await api.delete(`/todos/${id}`);
+  return data;
+}

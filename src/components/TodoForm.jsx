@@ -1,20 +1,11 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
-import { createTodo } from "../api/todo";
+import { useCreateTodo } from "../hooks/useTodo";
 
 export default function TodoForm() {
   const [title, setTitle] = useState("");
 
-  const queryClient = useQueryClient();
-
-  const create = useMutation({
-    mutationFn: createTodo,
-    onSuccess: () =>
-      queryClient.invalidateQueries({
-        queryKey: ["todos"],
-      }),
-  });
+  const create = useCreateTodo();
 
   const navigate = useNavigate();
 
